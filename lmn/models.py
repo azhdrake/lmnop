@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
-
+import birthday
 # Every model gets a primary key field by default.
 
 # Users, venues, shows, artists, notes
@@ -36,6 +36,7 @@ class Venue(models.Model):
 
 ''' A show - one artist playing at one venue at a particular date. '''
 class Show(models.Model):
+    
     show_date = models.DateTimeField(blank=False)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
     venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
@@ -58,3 +59,30 @@ class Note(models.Model):
 
     def __str__(self):
         return 'Note for user ID {} for show ID {} with title {} text {} posted on {}'.format(self.user, self.show, self.title, self.text, self.posted_date)
+
+#user profile table
+class UProfile(models.Model):
+    user = models.ForeignKey('auth.User', blank=False, on_delete=models.CASCADE)
+    birthday = birthday.fields.BirthdayField(blank=False) #found from https://pypi.org/project/django-birthday/
+    city = models.CharField(max_length=200, blank=True, null=True)
+    state = models.CharField(max_length=2, blank=False, null=False)
+    favoriteVenue = models.CharField(max_length=200, blank=True, null=True)
+    favoriteArtist = models.CharField(max_length=200, blank=True, null=True)
+    profilePicture = models.ImageField(upload_to='userProfile_image/', blank=True, null=True)
+    description = TextField(max_length=3000, blank=True, null=True)
+
+    #scripts to add, update, pull, & delete from the profile
+    def updateUserProfile():
+
+    def saveUserProfilePicture():
+        
+
+    def deleteUserProfilePicture ():
+
+    def changeUserProfilePicture():
+
+
+
+    def __str_(self):
+        proPic_str = self.profilePicture.url if self.profilePicture else 'no photo'
+        return 'User ID = {}, Birthday = {}, City = {},\n State = {}, Favorite Venue = {}, Favorite Artist = {}, Profile Picture {}, Description = {}'.format(self.user, self.fName, self.lName, self.birthday, self.city, self.state, self.favoriteVenue, self.favoriteArtist, self.proPic_str, self.description)
