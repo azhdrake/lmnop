@@ -41,8 +41,8 @@ class Show(models.Model):
     venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, blank=False)
     url = models.CharField(blank=False)
-    time = models.CharField(max_length=5, blank=False)
-    ages = models.CharField(max_length=2, blank=False)
+    time = models.CharField(max_length=40, blank=False)
+    ages = models.CharField(max_length=50, blank=False)
     show_date = models.DateTimeField(blank=False)
 
     def __str__(self):
