@@ -1,4 +1,5 @@
 {% extends 'lmn/base.html' %}
+
 {% block content %}
 
 
@@ -9,11 +10,11 @@ Text truncated to 200 characters. -->
 
 <h2 id='username_notes'>{{ user.username }}'s notes</h2>
  {% if notes.count >= 8 %}
-    <img src="/media/ranking/gold.png" class="user_badge"></img>
+     <img src="/media/ranking/gold.png" class="user_badge"> YOUR REWARD IS GOLD </img>
  {% elif notes.count >= 4 %}
-    <img src="/media/ranking/sylver.png" class="user_badge"></img>
+     <img src="/media/ranking/sylver.png" class="user_badge">YOUR REWARD IS SYLVER </img>
  {% elif notes.count >= 2 %}
-    <img src="/media/ranking/bronze.png" class="user_badge"></img>
+     <img src="/media/ranking/bronze.png" class="user_badge">YOUR REWARD IS BRONZE </img>
 {% endif %}
 <div class="user_count_badge"><p class="note_count">Your Total Note Submissions is : {{ notes.count }}</p>
 
