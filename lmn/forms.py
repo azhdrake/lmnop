@@ -86,17 +86,17 @@ class UserProfileForm(forms.ModelForm):
         model = UProfile
         fields = ('birthday', 'city', 'state', 'favoriteVenue', 'favoriteArtist', 'profilePicture', 'description')
 
-    def save(self, commit=True):
-        UProfile = super(UserProfileForm, self).save(commit=False)
-        UProfile.birthday = self['birthday']
-        uProfile.city = self['city']
-        uProfile.state = self['state']
-        uProfile.favoriteVenue = self['favoriteVenue']
-        uProfile.favoriteArtist = self['favoriteArtist']
-        uProfile.profilePicture = self['profilePicture']
-        uProfile.description = self['description']
+    # def save(self, commit=True):
+    #     UProfile = super(UserProfileForm, self).save(commit=False)
+    #     UProfile.birthday = self['birthday']
+    #     uProfile.city = self['city']
+    #     uProfile.state = self['state']
+    #     uProfile.favoriteVenue = self['favoriteVenue']
+    #     uProfile.favoriteArtist = self['favoriteArtist']
+    #     uProfile.profilePicture = self['profilePicture']
+    #     uProfile.description = self['description']
 
-        if commit:
-            uProfile.save()
+    #     if commit:
+    #         uProfile.save()
 
-        return uProfile   
+    #     return uProfile   
