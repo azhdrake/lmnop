@@ -15,6 +15,9 @@
     <form action="{% url 'lmn:edit_note' note_pk=note.pk %}">
       <input id="edit_note" type='submit' value='Edit note'>
     </form>
+    <form action="{%url 'lmn:delete_note' note_pk=note.pk %}">
+        <input id="delete_note" type='submit' value='Delete Note'>
+    </form>
   
 {% endif %}
 

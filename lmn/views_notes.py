@@ -64,3 +64,15 @@ def edit_note(request, note_pk):
         form = EditNoteForm(instance=note)
 
     return render(request, 'lmn/notes/edit_note.html', { 'form': form, 'note': note })
+
+
+def delete_note(request, note_pk):
+    note = get_object_or_404(Note, pk=note_pk)
+
+    if request.method == 'POST':
+        note.delete()
+        return redirect('lmn:latest_notes')
+    context = {
+        'note': note,
+    }
+    return render(request, 'lmn/notes/delete_note.html', context)

@@ -12,5 +12,9 @@
         <P>
         <input type='submit' value='Update Note'>
     </form>
+    <P>
+    <form action="{% url 'lmn:delete_note' note_pk=note.pk %}">
+        <input id="delete_note" type='submit' value='Delete Note'>
+    </form>
 
 {% endblock %}
