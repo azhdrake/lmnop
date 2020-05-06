@@ -2,26 +2,33 @@
 {% block content %}
 
 
-{% if show %}
-  <h2 id="show_title">Notes for {{ show.artist.name }} at {{ show.venue.name }} on {{ show.show_date }}</h2>
+{% if shows %}
+  <h2>Top Shows</h2>
 {% else %}
-  <h2>Latest Notes</h2>
+  <h2>Unable to rank shows</h2>
 {% endif %}
 
+{% for show in shows %}
+<div id="show_{{ show.pk }}">
+    <h3 class="show_info">{{ show.artist }}</h3>
+    <h3 class="show_pk">{{ show.venue }}</h3>
+    <hr>
+</div>
 
-{% for note in notes %}
+{% endfor %}
+
+<!-- {% for note in notes %}
 
 <div id="note_{{ note.pk }}">
   <h3 class="note_title">{{ note.title }}</h3>
   <p class="show_info"><a href="{% url 'lmn:notes_for_show' show_pk=note.show.pk %}">{{ note.show.artist.name }} at {{ note.show.venue.name }} on {{ note.show.show_date }}</a></p>
   <P class="note_info">Posted on {{ note.posted_date }} by <a class='user' href="{% url 'lmn:user_profile' user_pk=note.user.pk %}">{{ note.user.username }}</a></p>
-  <p class='note_text'>{{ note.text|truncatechars:100 }}</p>
-  
-  <!-- 
+  <p class='note_text'>{{ note.text|truncatechars:100 }}</p> -->
+-- 
       If the note was created by the logged in user, an edit note button
       and a delete note button will appear underneath the note
    -->
-  {% if note.user.username == user.username %}
+  <!-- {% if note.user.username == user.username %}
 
     <p><form action="{% url 'lmn:edit_note' note_pk=note.pk %}">
       <input id="edit_note" type='submit' value='Edit Note'>
@@ -31,7 +38,7 @@
     </form>
     </p>
 
-  {% endif %}
+  {% endif %} -->
 
   <hr>
 
